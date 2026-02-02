@@ -1,6 +1,3 @@
-// ===================================
-// Navigation Toggle (Mobile)
-// ===================================
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -10,7 +7,6 @@ navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
@@ -18,9 +14,6 @@ navLinks.forEach(link => {
     });
 });
 
-// ===================================
-// Header Scroll Effect
-// ===================================
 const header = document.getElementById('header');
 let lastScroll = 0;
 
@@ -38,9 +31,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ===================================
-// Smooth Scrolling for Navigation Links
-// ===================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -48,7 +38,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         if (target) {
             const headerHeight = header.offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight;
+            const targetPosition = target.offsetTop - headerHeight - 20;
             
             window.scrollTo({
                 top: targetPosition,
@@ -58,9 +48,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===================================
-// Active Navigation Link on Scroll
-// ===================================
 const sections = document.querySelectorAll('section[id]');
 
 function highlightNavigation() {
@@ -82,9 +69,6 @@ function highlightNavigation() {
 
 window.addEventListener('scroll', highlightNavigation);
 
-// ===================================
-// Scroll Animations
-// ===================================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -98,23 +82,18 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all elements that should fade in
 const fadeElements = document.querySelectorAll('.service-card, .feature-card, .timeline-item, .about-content, .contact-form');
 fadeElements.forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
 
-// ===================================
-// Contact Form Handling
-// ===================================
 const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Get form data
     const formData = new FormData(contactForm);
     const data = {
         name: formData.get('name'),
@@ -125,13 +104,11 @@ contactForm.addEventListener('submit', async (e) => {
         consent: formData.get('consent')
     };
     
-    // Validate form
     if (!data.name || !data.email || !data.phone || !data.service || !data.message || !data.consent) {
         showMessage('Please fill in all required fields and consent to be contacted.', 'error');
         return;
     }
     
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
         showMessage('Please enter a valid email address.', 'error');
@@ -139,12 +116,10 @@ contactForm.addEventListener('submit', async (e) => {
     }
     
     try {
-        // Send form to Formspree
         await sendToFormspree(data);
         
         showMessage('Thank you for your inquiry! We will contact you within 24 hours.', 'success');
         contactForm.reset();
-        
         
     } catch (error) {
         showMessage('There was an error submitting your form. Please try again or contact us directly.', 'error');
@@ -156,10 +131,8 @@ function showMessage(message, type) {
     formMessage.className = `form-message ${type}`;
     formMessage.style.display = 'block';
     
-    // Scroll to message
     formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     
-    // Hide message after 5 seconds
     setTimeout(() => {
         formMessage.style.display = 'none';
     }, 5000);
@@ -167,19 +140,12 @@ function showMessage(message, type) {
 
 function simulateFormSubmission(data) {
     return new Promise((resolve) => {
-        // Log form data to console (for testing)
         console.log('Form submitted with data:', data);
         
-        // Simulate network delay
         setTimeout(resolve, 1000);
     });
 }
 
-// ===================================
-// Optional: Integration with Form Services
-// ===================================
-
-// Formspree Integration
 async function sendToFormspree(data) {
     const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID';
     
@@ -198,27 +164,6 @@ async function sendToFormspree(data) {
     return response.json();
 }
 
-// Example: EmailJS Integration
-// Uncomment and configure if you want to use EmailJS
-/*
-async function sendToEmailJS(data) {
-    emailjs.init('YOUR_PUBLIC_KEY');
-    
-    const response = await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-        from_name: data.name,
-        from_email: data.email,
-        phone: data.phone,
-        service: data.service,
-        message: data.message
-    });
-    
-    return response;
-}
-*/
-
-// ===================================
-// Parallax Effect on Hero Background
-// ===================================
 const heroBackground = document.querySelector('.hero-background');
 
 window.addEventListener('scroll', () => {
@@ -230,9 +175,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ===================================
-// Scroll to Top on Logo Click
-// ===================================
 const logo = document.querySelector('.nav-logo');
 
 logo.addEventListener('click', (e) => {
@@ -243,9 +185,6 @@ logo.addEventListener('click', (e) => {
     });
 });
 
-// ===================================
-// Form Input Focus Animation
-// ===================================
 const formInputs = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
 
 formInputs.forEach(input => {
@@ -259,9 +198,6 @@ formInputs.forEach(input => {
     });
 });
 
-// ===================================
-// Loading Animation
-// ===================================
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
@@ -271,8 +207,6 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// ===================================
-// Console Message
-// ===================================
-console.log('%c👋 Welcome to our Immigration Consulting Website!', 'color: #1a2847; font-size: 16px; font-weight: bold;');
+console.log('%c Welcome to our Immigration Consulting Website!', 'color: #1a2847; font-size: 16px; font-weight: bold;');
+console.log('%c For inquiries, please use the contact form or reach out directly.', 'color: #6b7280; font-size: 12px;');
 console.log('%cFor inquiries, please use the contact form or reach out directly.', 'color: #6b7280; font-size: 12px;');
