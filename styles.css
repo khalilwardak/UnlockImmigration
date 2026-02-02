@@ -81,9 +81,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-subtitle {
     font-size: 1.125rem;
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* ===================================
@@ -567,6 +568,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-light);
     padding-left: 1.5rem;
     position: relative;
+    text-align: left;
 }
 
 .service-list li::before {
@@ -638,49 +640,66 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===================================
-   Process Section (Timeline)
+   Process Section - Beautiful Modern Design
    =================================== */
-.timeline {
+.process {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     position: relative;
-    max-width: 800px;
-    margin: 0 auto;
+    overflow: hidden;
 }
 
-.timeline::before {
+.process::before {
     content: '';
     position: absolute;
-    left: 30px;
     top: 0;
-    height: 100%;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
-}
-
-.timeline-item {
-    position: relative;
-    padding-left: 80px;
-    margin-bottom: 3rem;
-    animation: fadeInLeft 0.8s ease-out;
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.timeline-marker {
-    position: absolute;
     left: 0;
-    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" x="0" y="0" fill="rgba(255,255,255,0.03)"/></svg>');
+    background-size: 60px 60px;
+    opacity: 0.5;
 }
 
-.timeline-number {
+.process .section-title,
+.process .section-tag {
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.process .section-tag::after {
+    background: var(--accent-color);
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.process-step {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.process-step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
     width: 60px;
     height: 60px;
     background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
@@ -691,33 +710,94 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--bg-white);
-    box-shadow: 0 0 0 10px var(--bg-white), 0 0 0 12px var(--border-color);
+    color: white;
+    box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+    z-index: 2;
 }
 
-.timeline-content {
-    background: var(--bg-white);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: var(--shadow-sm);
-    border-left: 4px solid var(--accent-color);
-    transition: var(--transition);
+.step-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
-.timeline-content:hover {
-    transform: translateX(10px);
-    box-shadow: var(--shadow-md);
+.step-icon svg {
+    width: 35px;
+    height: 35px;
+    color: white;
 }
 
-.timeline-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+.step-content {
+    text-align: center;
+}
+
+.step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-.timeline-text {
+.step-description {
     color: var(--text-light);
-    line-height: 1.7;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.step-features {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.step-features li {
+    color: var(--text-dark);
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.step-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Process Connection Lines */
+.process-step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -2rem;
+    width: 2rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    transform: translateY(-50%);
+}
+
+.process-step:last-child::after {
+    display: none;
+}
+
+/* Responsive Process */
+@media (max-width: 768px) {
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-step::after {
+        display: none;
+    }
 }
 
 /* ===================================
