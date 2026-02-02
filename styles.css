@@ -9,6 +9,7 @@
     --text-light: #6b7280;
     --bg-light: #f8f9fa;
     --bg-white: #ffffff;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --border-color: #e5e7eb;
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -32,7 +33,8 @@ body {
     color: var(--text-dark);
     line-height: 1.7;
     overflow-x: hidden;
-    background: var(--bg-white);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
 }
 
 .container {
@@ -103,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 20px;
+    padding: 0.75rem 20px;
 }
 
 .nav-logo {
@@ -113,7 +115,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--primary-color);
     line-height: 1;
@@ -203,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 80px;
+    padding-top: 60px;
     overflow: hidden;
 }
 
@@ -213,8 +215,15 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2d4875 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     z-index: 0;
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .hero-background::before {
@@ -225,8 +234,9 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 105, 180, 0.2) 0%, transparent 50%);
     animation: backgroundFloat 20s ease-in-out infinite;
 }
 
@@ -489,14 +499,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card {
-    background: var(--bg-white);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     padding: 2.5rem;
     border-radius: 20px;
-    box-shadow: var(--shadow-sm);
+    text-align: center;
     transition: var(--transition);
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
 }
 
 .service-card::before {
@@ -506,10 +517,12 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 300% 100%;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
+    animation: gradientShift 3s ease infinite;
 }
 
 .service-card:hover::before {
@@ -524,12 +537,14 @@ h1, h2, h3, h4, h5, h6 {
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), #2d4875);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 .service-icon svg {
