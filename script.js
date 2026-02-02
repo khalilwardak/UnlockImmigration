@@ -139,18 +139,12 @@ contactForm.addEventListener('submit', async (e) => {
     }
     
     try {
-        // Since this is a static site, we'll show a success message
-        // In production, you would send this to a backend service or email API
-        // Example services: Formspree, EmailJS, Netlify Forms, or your own backend
-        
-        // Simulate form submission
-        await simulateFormSubmission(data);
+        // Send form to Formspree
+        await sendToFormspree(data);
         
         showMessage('Thank you for your inquiry! We will contact you within 24 hours.', 'success');
         contactForm.reset();
         
-        // Optional: Send to a form service
-        // await sendToFormService(data);
         
     } catch (error) {
         showMessage('There was an error submitting your form. Please try again or contact us directly.', 'error');
@@ -185,9 +179,7 @@ function simulateFormSubmission(data) {
 // Optional: Integration with Form Services
 // ===================================
 
-// Example: Formspree Integration
-// Uncomment and configure if you want to use Formspree
-/*
+// Formspree Integration
 async function sendToFormspree(data) {
     const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID';
     
@@ -205,7 +197,6 @@ async function sendToFormspree(data) {
     
     return response.json();
 }
-*/
 
 // Example: EmailJS Integration
 // Uncomment and configure if you want to use EmailJS
