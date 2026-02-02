@@ -386,15 +386,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===================================
-   About Section - Beautiful Integrated Design
+   About Section - Modern Beautiful Design
    =================================== */
 .about {
-    background: var(--bg-light);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(26, 40, 71, 0.03)"/></svg>');
+    background-size: 40px 40px;
+    opacity: 0.8;
 }
 
 .about-content-full {
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .about-intro {
@@ -415,84 +431,369 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .credentials-integrated {
-    background: linear-gradient(135deg, var(--bg-white) 0%, #f8f9fa 100%);
-    border-radius: 25px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
+    background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%);
+    border-radius: 30px;
+    padding: 4rem;
+    box-shadow: 
+        0 12px 40px rgba(26, 40, 71, 0.08),
+        0 4px 12px rgba(26, 40, 71, 0.04);
+    border: 1px solid rgba(26, 40, 71, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.credentials-integrated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.02) 0%, transparent 70%);
+    opacity: 0.5;
 }
 
 .credentials-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
 }
 
 .credentials-header h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.credentials-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--accent-color) 0%, 
+        var(--primary-color) 50%, 
+        var(--accent-color) 100%);
+    transform: translateX(-50%);
+    border-radius: 2px;
 }
 
 .credentials-header p {
     color: var(--text-light);
     font-size: 1rem;
+    opacity: 0.9;
 }
 
 .credentials-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 .credential-badge {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: var(--bg-white);
-    border-radius: 15px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 24px rgba(26, 40, 71, 0.06),
+        0 2px 8px rgba(26, 40, 71, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-left: 4px solid var(--accent-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.credential-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(26, 40, 71, 0.02) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .credential-badge:hover {
-    transform: translateX(10px);
-    box-shadow: var(--shadow-md);
+    transform: translateX(15px) scale(1.02);
+    box-shadow: 
+        0 12px 32px rgba(26, 40, 71, 0.1),
+        0 4px 16px rgba(26, 40, 71, 0.06);
+    border-left-color: var(--primary-color);
+}
+
+.credential-badge:hover::before {
+    opacity: 1;
 }
 
 .badge-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--accent-color), #f4c430);
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #f4c430 100%);
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    box-shadow: 
+        0 8px 20px rgba(212, 175, 55, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.badge-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent, rgba(255, 255, 255, 0.2));
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.credential-badge:hover .badge-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 12px 28px rgba(212, 175, 55, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.credential-badge:hover .badge-icon::before {
+    opacity: 1;
 }
 
 .badge-icon svg {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     color: white;
+    transition: transform 0.3s ease;
+}
+
+.credential-badge:hover .badge-icon svg {
+    transform: scale(1.1);
 }
 
 .badge-content h4 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
 }
 
 .badge-content p {
     color: var(--text-light);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.credential-badge:hover .badge-content p {
+    color: var(--text-dark);
+}
+
+/* ===================================
+   Contact Section - Modern Beautiful Cards
+   =================================== */
+.contact {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(26, 40, 71, 0.03)"/></svg>');
+    background-size: 40px 40px;
+    opacity: 0.8;
+}
+
+.contact-info-full {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2.5rem;
+    background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%);
+    border-radius: 25px;
+    box-shadow: 
+        0 10px 40px rgba(26, 40, 71, 0.08),
+        0 2px 10px rgba(26, 40, 71, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-left: 4px solid var(--accent-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(26, 40, 71, 0.02) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 16px 48px rgba(26, 40, 71, 0.12),
+        0 4px 16px rgba(26, 40, 71, 0.08);
+    border-left-color: var(--primary-color);
+}
+
+.contact-item:hover::before {
+    opacity: 1;
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d4875 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 
+        0 10px 25px rgba(26, 40, 71, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent, rgba(255, 255, 255, 0.2));
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 15px 35px rgba(26, 40, 71, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.contact-item:hover .contact-icon::before {
+    opacity: 1;
+}
+
+.contact-icon svg {
+    width: 35px;
+    height: 35px;
+    color: var(--bg-white);
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover .contact-icon svg {
+    transform: scale(1.1);
+}
+
+.contact-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-details a,
+.contact-details p {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
     line-height: 1.5;
-    font-size: 0.9rem;
+}
+
+.contact-details a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .credentials-integrated {
+        padding: 3rem;
+    }
+    
+    .credential-badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+    
+    .badge-icon {
+        margin: 0 auto;
+    }
+    
+    .badge-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .badge-content p {
+        font-size: 0.9rem;
+    }
+    
+    .contact-info-full {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contact-item {
+        padding: 2rem;
+    }
+    
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .contact-icon svg {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* ===================================
@@ -638,7 +939,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===================================
-   Services Section
+   Services Section - Modern Beautiful Cards
    =================================== */
 .services-grid {
     display: grid;
@@ -647,15 +948,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 2.5rem;
-    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 3rem 2.5rem;
+    border-radius: 30px;
     text-align: center;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(26, 40, 71, 0.1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+    box-shadow: 
+        0 10px 40px rgba(26, 40, 71, 0.08),
+        0 2px 10px rgba(26, 40, 71, 0.05);
 }
 
 .service-card::before {
@@ -663,14 +966,24 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
-    background-size: 300% 100%;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        var(--accent-color) 25%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 75%, 
+        var(--primary-color) 100%);
+    background-size: 200% 100%;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s ease;
-    animation: gradientShift 3s ease infinite;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: gradientFlow 3s ease-in-out infinite;
+}
+
+@keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .service-card:hover::before {
@@ -678,78 +991,178 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(26, 40, 71, 0.15),
+        0 5px 20px rgba(26, 40, 71, 0.1);
+    border-color: rgba(26, 40, 71, 0.2);
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.service-card:hover::after {
+    opacity: 1;
 }
 
 .service-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 15px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d4875 100%);
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    margin: 0 auto 2.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        0 10px 25px rgba(26, 40, 71, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--accent-color), transparent, var(--accent-color));
+    border-radius: 25px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.service-card:hover .service-icon::before {
+    opacity: 1;
+    animation: iconGlow 2s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 .service-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     color: var(--bg-white);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 15px 35px rgba(26, 40, 71, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.service-card:hover .service-icon svg {
+    transform: scale(1.1);
 }
 
 .service-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
     color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover .service-title {
+    color: var(--accent-color);
 }
 
 .service-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .service-list li {
     color: var(--text-light);
-    padding-left: 1.5rem;
+    padding-left: 2rem;
     position: relative;
     text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
 }
 
 .service-list li::before {
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--secondary-color);
+    color: var(--accent-color);
     font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-list li {
+    color: var(--text-dark);
+    transform: translateX(5px);
+}
+
+.service-card:hover .service-list li::before {
+    color: var(--primary-color);
+    transform: translateX(3px);
 }
 
 /* ===================================
-   Why Choose Us Section
+   Why Choose Us Section - Modern Beautiful Cards
    =================================== */
 .why-choose {
-    background: var(--bg-light);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-choose::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(26, 40, 71, 0.03)"/></svg>');
+    background-size: 40px 40px;
+    opacity: 0.8;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .feature-card {
-    background: var(--bg-white);
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+    background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%);
+    padding: 3rem 2.5rem;
+    border-radius: 25px;
+    box-shadow: 
+        0 8px 32px rgba(26, 40, 71, 0.08),
+        0 2px 8px rgba(26, 40, 71, 0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(26, 40, 71, 0.05);
 }
 
 .feature-card::before {
@@ -757,36 +1170,151 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 0;
     right: 0;
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at top right, 
+        rgba(212, 175, 55, 0.08) 0%, 
+        transparent 60%);
     border-radius: 0 0 0 100%;
+    transition: all 0.4s ease;
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--accent-color) 0%, 
+        var(--primary-color) 50%, 
+        var(--accent-color) 100%);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: featureGradient 4s ease-in-out infinite;
+}
+
+@keyframes featureGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 16px 48px rgba(26, 40, 71, 0.12),
+        0 4px 16px rgba(26, 40, 71, 0.08);
+    border-color: rgba(26, 40, 71, 0.1);
+}
+
+.feature-card:hover::before {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at top right, 
+        rgba(212, 175, 55, 0.12) 0%, 
+        transparent 60%);
+}
+
+.feature-card:hover::after {
+    transform: scaleX(1);
 }
 
 .feature-number {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    opacity: 0.3;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    opacity: 0.15;
     line-height: 1;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.feature-number::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.feature-card:hover .feature-number {
+    opacity: 0.25;
+    transform: scale(1.05);
+}
+
+.feature-card:hover .feature-number::before {
+    opacity: 1;
 }
 
 .feature-title {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
     color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.feature-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feature-card:hover .feature-title {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.feature-card:hover .feature-title::after {
+    width: 30px;
 }
 
 .feature-text {
     color: var(--text-light);
     line-height: 1.7;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 20px;
+}
+
+.feature-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        var(--accent-color) 0%, 
+        transparent 50%, 
+        var(--accent-color) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover .feature-text {
+    color: var(--text-dark);
+    padding-left: 25px;
+}
+
+.feature-card:hover .feature-text::before {
+    opacity: 0.5;
 }
 
 /* ===================================
