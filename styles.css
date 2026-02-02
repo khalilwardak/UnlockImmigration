@@ -213,7 +213,10 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #2d4875 100%);
+    background-image: url('https://drive.google.com/uc?export=view&id=1-9MjBXRn1m1Gcnvrj5gH_GJSjCd6XC2f');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 0;
 }
 
